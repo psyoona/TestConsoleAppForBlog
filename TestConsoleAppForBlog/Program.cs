@@ -5,6 +5,7 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using System.Xml;
+	using TestConsoleAppForBlog.Test;
 
 	class LargeDataClass
 	{
@@ -48,30 +49,7 @@
 	{
 		static void Main(string[] args)
 		{
-			string UserList = "<Root>" +
-				"<UserInfo name=\"KES\" uid=\"1\" cid=\"1\" />" +
-				"<UserInfo name=\"KDH\" uid=\"2\" cid=\"1\" />" +
-				"<UserInfo name=\"CDK\" uid=\"3\" cid=\"2\" />" +
-				"<UserInfo name=\"NDW\" uid=\"4\" cid=\"3\" />" +
-				"</Root>";
-			string BrandList = "<Root>" +
-				"<BrandInfo bid=\"1\" name=\"Hyundai\" />" +
-				"<BrandInfo bid=\"2\" name=\"KIA\" />" +
-				"<BrandInfo bid=\"3\" name=\"BMW\" />" +
-				"<BrandInfo bid=\"4\" name=\"Tesla\" />" +
-				"</Root>";
-			string CarList = "<Root>" +
-				"<CarInfo cid=\"1\" name=\"Genesis G90\" bid=\"1\" />" +
-				"<CarInfo cid=\"2\" name=\"스포티지R\" bid=\"2\" />" +
-				"<CarInfo cid=\"3\" name=\"Model Y\" bid=\"4\" />" +
-				"<CarInfo cid=\"4\" name=\"iX\" bid=\"3\" />" +
-				"</Root>";
-
-			string input = "KES";
-			XmlDocument xdoc = new XmlDocument();
-			xdoc.LoadXml(UserList);
-			XmlAttributeCollection xmlAttribute = xdoc.SelectSingleNode("/descendant::Root/UserInfo").Attributes;
-			Console.WriteLine($"{xmlAttribute.GetNamedItem("name").Value} {xmlAttribute.GetNamedItem("uid").Value} {xmlAttribute.GetNamedItem("cid").Value}");
+			new LinqTest().MakeSubList();
 		}
 
 		void Test1()
@@ -150,7 +128,33 @@
 			Console.WriteLine(result);
 		}
 
+		void Test55()
+		{
+			string UserList = "<Root>" +
+				"<UserInfo name=\"KES\" uid=\"1\" cid=\"1\" />" +
+				"<UserInfo name=\"KDH\" uid=\"2\" cid=\"1\" />" +
+				"<UserInfo name=\"CDK\" uid=\"3\" cid=\"2\" />" +
+				"<UserInfo name=\"NDW\" uid=\"4\" cid=\"3\" />" +
+				"</Root>";
+			string BrandList = "<Root>" +
+				"<BrandInfo bid=\"1\" name=\"Hyundai\" />" +
+				"<BrandInfo bid=\"2\" name=\"KIA\" />" +
+				"<BrandInfo bid=\"3\" name=\"BMW\" />" +
+				"<BrandInfo bid=\"4\" name=\"Tesla\" />" +
+				"</Root>";
+			string CarList = "<Root>" +
+				"<CarInfo cid=\"1\" name=\"Genesis G90\" bid=\"1\" />" +
+				"<CarInfo cid=\"2\" name=\"스포티지R\" bid=\"2\" />" +
+				"<CarInfo cid=\"3\" name=\"Model Y\" bid=\"4\" />" +
+				"<CarInfo cid=\"4\" name=\"iX\" bid=\"3\" />" +
+				"</Root>";
 
+			string input = "KES";
+			XmlDocument xdoc = new XmlDocument();
+			xdoc.LoadXml(UserList);
+			XmlAttributeCollection xmlAttribute = xdoc.SelectSingleNode("/descendant::Root/UserInfo").Attributes;
+			Console.WriteLine($"{xmlAttribute.GetNamedItem("name").Value} {xmlAttribute.GetNamedItem("uid").Value} {xmlAttribute.GetNamedItem("cid").Value}");
+		}
 
 
 
